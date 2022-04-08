@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PlayerService} from "../player.service";
+import PlayerInterface, {PlayerService} from "../../services/player.service";
 
 
 @Component({
@@ -8,10 +8,9 @@ import {PlayerService} from "../player.service";
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
- players = new Array<any>();
+ players = new Array<PlayerInterface>();
 
   constructor(public playerService: PlayerService) {}
-
 
   ngOnInit(): void {
     this.playerService.getPlayers().subscribe(response => {

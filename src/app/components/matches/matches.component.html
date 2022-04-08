@@ -1,0 +1,18 @@
+<p>MATCHES</p>
+
+<div *ngFor="let match of matches">
+  <div style="display: flex; justify-content: space-between">
+    <div style="display: flex; flex-direction: column">
+      <img style="width: 7rem" src="{{match.home_team.logo}}"/> <span>{{match.home_team.name}}</span>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center">
+      <span>{{match.date}}</span>
+      <span>{{match.stadium}}</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column">
+      <img style="width: 7rem" src="{{match.away_team.logo}}"/> <span>{{match.away_team.name}}</span>
+    </div>
+  </div>
+</div>
+

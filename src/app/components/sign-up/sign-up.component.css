@@ -1,0 +1,36 @@
+.sign-wrapper {
+  padding: 3rem;
+  margin: 0 auto;
+  background-color: #bababa;
+}
+
+.sign-form {
+  margin: unset;
+  padding: unset;
+  display: flex;
+  flex-direction: column;
+  background-color: #bababa;
+}
+
+.sign-input, .sign-button {
+  margin: 0.7rem 0;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  height: 1.5rem;
+  font-size: medium;
+}
+
+.sign-button {
+  padding: unset;
+  height: 3rem;
+  transition: all 0.25s ease-in-out;
+}
+
+.sign-button:hover {
+  cursor: pointer;
+}
+
+
+
+

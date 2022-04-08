@@ -1,0 +1,11 @@
+<div class="sign-wrapper">
+  <h3>SIGN UP AND FOLLOWING FAVORITE TEAMS!</h3>
+<!--  <p *ngIf="userId">{{userName}}</p>-->
+  <form class="sign-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <input class="sign-input" type="text" placeholder="Name" formControlName="name"/>
+    <input class="sign-input" type="text" placeholder="Email" formControlName="email"/>
+    <input class="sign-input" type="text" placeholder="Password" formControlName="password"/>
+    <Button class="sign-button" type="submit">SIGN UP</Button>
+  </form>
+</div>
+
