@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StatisticInterface, StatService} from "../../services/stat.service";
+import {StatService} from "../../services/stat.service";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-stats',
@@ -7,14 +8,20 @@ import {StatisticInterface, StatService} from "../../services/stat.service";
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-   stats = new Array<StatisticInterface>();
+   isLoading = false;
+   displayedColumns: string[] = ['name', 'matches', 'wins', 'draws', 'loses', 'GF', 'GA', 'GD', 'PTS'];
 
-  constructor(public statService: StatService) { }
+  constructor(public statService: StatService,
+              public appService: AppService,) { }
 
   ngOnInit(): void {
-    this.statService.getStats().subscribe(response => {
-       this.stats = response.data;
-    })
+    if(this.appService.stats.length === 0) {
+      this.isLoading = true;
+      this.statService.getStats().subscribe(response => {
+        this.appService.stats = response.data;
+        this.isLoading = false;
+      })
+    }
   }
 
 }

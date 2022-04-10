@@ -1,7 +1,37 @@
-<h2>Players</h2>
+<h2>PLAYERS</h2>
 
-<ul>
-  <li *ngFor="let player of players">
-    <span>{{player.name}} {{player.surname}} - {{player.position.name}} --- {{player.team.name}}</span>
-  </li>
-</ul>
+<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem;" mode="indeterminate"></mat-progress-spinner>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="appService.players" style="width: 55rem;">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center"> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} {{element.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Position </th>
+      <td mat-cell *matCellDef="let element"> {{element.position?.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="team">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Team </th>
+      <td mat-cell *matCellDef="let element"> {{element.team?.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements"
+                 style="margin-bottom: 10rem;">
+  </mat-paginator>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import PlayerInterface, {PlayerService} from "../../services/player.service";
+import {PlayerService} from "../../services/player.service";
+import {AppService} from "../../app.service";
 
 
 @Component({
@@ -8,14 +9,21 @@ import PlayerInterface, {PlayerService} from "../../services/player.service";
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
- players = new Array<PlayerInterface>();
 
-  constructor(public playerService: PlayerService) {}
+ isLoading = false;
+ displayedColumns: string[] = ['id', 'name', 'position', 'team'];
+
+  constructor(public playerService: PlayerService,
+              public appService: AppService,) {}
 
   ngOnInit(): void {
-    this.playerService.getPlayers().subscribe(response => {
-      this.players = response.data;
-    });
+    if(this.appService.players.length === 0) {
+      this.isLoading = true;
+      this.playerService.getPlayers().subscribe(response => {
+        this.appService.players = response.data;
+        this.isLoading = false;
+      });
+    }
   }
 
 }

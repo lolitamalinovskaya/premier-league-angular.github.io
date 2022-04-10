@@ -1,18 +1,20 @@
-<p>MATCHES</p>
+<h2>MATCHES</h2>
+<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
 
-<div *ngFor="let match of matches">
-  <div style="display: flex; justify-content: space-between">
-    <div style="display: flex; flex-direction: column">
-      <img style="width: 7rem" src="{{match.home_team.logo}}"/> <span>{{match.home_team.name}}</span>
-    </div>
+  <div *ngFor="let match of appService.matches" class="inner" style="display: flex; justify-content: space-between">
+    <figure style="display: flex; flex-direction: column">
+      <img style="width: 7rem" src="{{match.home_team.logo}}"/>
+      <figcaption>{{match.home_team.name}}</figcaption>
+    </figure>
+
     <div style="display: flex; flex-direction: column; justify-content: center">
-      <span>{{match.date}}</span>
-      <span>{{match.stadium}}</span>
+      <p>{{parseDate(match.date)}}</p>
+      <p>{{match.stadium}}</p>
     </div>
 
-    <div style="display: flex; flex-direction: column">
-      <img style="width: 7rem" src="{{match.away_team.logo}}"/> <span>{{match.away_team.name}}</span>
-    </div>
+    <figure style="display: flex; flex-direction: column">
+      <img style="width: 7rem" src="{{match.away_team.logo}}"/>
+      <figcaption>{{match.away_team.name}}</figcaption>
+    </figure>
   </div>
-</div>
 

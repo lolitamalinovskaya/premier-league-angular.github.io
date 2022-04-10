@@ -11,13 +11,20 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LogInComponent } from './components/log-in/log-in.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
   { path: 'matches', component: MatchesComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'stats', component: StatsComponent },
-  /*      { path: 'products/:productId', component: ProductDetailsComponent },*/
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'logIn', component: LogInComponent },
+  /*{ path: 'products/:productId', component: ProductDetailsComponent },*/
 ];
 
 @NgModule({
@@ -27,7 +34,9 @@ const routes: Routes = [
     MatchesComponent,
     TeamsComponent,
     StatsComponent,
-    SignUpComponent
+    SignUpComponent,
+    LogInComponent,
+    ToolBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +45,9 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
   ],

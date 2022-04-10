@@ -1,0 +1,28 @@
+h2 {
+  margin: 2rem auto;
+  font-size: calc(12px + 2vmin);
+  color: white;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 10rem;
+}
+
+figure {
+  margin: unset;
+  max-width: 170px;
+  background-color: lightgray;
+  padding: 2rem;
+  min-height: 10rem;
+  width: 12rem;
+}
+
+figcaption {
+  padding-top: 0.5rem;
+  line-height: 2rem;
+}

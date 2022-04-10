@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -15,11 +16,10 @@ export class SignUpComponent implements OnInit {
     password: '',
   })
 
-  userId = '';
-  userName = '';
-
   constructor(private formBuilder: FormBuilder,
-              private http: HttpClient,) {}
+              private http: HttpClient,
+              private router: Router,
+              ) {}
 
   onSubmit(): void {
     const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/auth/register';
@@ -27,16 +27,13 @@ export class SignUpComponent implements OnInit {
     const body = this.checkoutForm.value;
 
    this.http.post<any>(url, body, { headers }).subscribe(data => {
-        this.userId = data.id;
-        this.userName = data.name;
+        this.router.navigate(['/logIn']);
      }
    );
 
    this.checkoutForm.reset();
-   if (this.userId) {} /*routing must be here*/
   }
 
   ngOnInit(): void {
   }
-
 }

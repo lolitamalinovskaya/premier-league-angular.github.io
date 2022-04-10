@@ -1,8 +1,8 @@
-<p>TEAMS</p>
-
-<div *ngFor="let team of teams">
-  <div>
-    <img src="{{team.logo}}" alt="logo" style="width: 7rem"/>
-    <p>{{team.name}}</p>
-  </div>
+<h2>TEAMS</h2>
+<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
+<div class="inner">
+  <figure *ngFor="let team of appService.teams">
+    <img src="{{team.logo}}" alt="logo" style="width: 6rem; height: 6rem;"/>
+    <figcaption>{{team.name}}</figcaption>
+  </figure>
 </div>

@@ -1,0 +1,22 @@
+h2 {
+  margin: 2rem auto;
+  font-size: calc(12px + 2vmin);
+  color: white;
+}
+
+.inner {
+  width: 70vw;
+  background-color: #e2e0e3;
+  margin-bottom: 1rem;
+}
+
+figure {
+  max-width: 170px;
+  width: 10rem;
+  align-items: center;
+}
+
+figcaption {
+  padding-top: 0.5rem;
+  line-height: 2rem;
+}
