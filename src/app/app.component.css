@@ -16,22 +16,22 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  min-height: 100vh;
 }
 
 .wrapper {
   text-align: center;
-  min-height: 100vh;
   margin: 0 auto;
   padding: 0 15px;
   max-width: 1440px;
   min-width: 320px;
   font-size: calc(10px + 2vmin);
   user-select: none;
+  position: relative;
 }
 
 .toolbar {
-  position: absolute;
-  top: 0;
+  position: fixed;
   left: 0;
   right: 0;
   padding: 0 3rem;
@@ -69,8 +69,8 @@
 
 .content {
   display: flex;
-  margin: 70px auto 0;
-  padding: 0 16px;
+  margin: 0 auto;
+  padding: 70px 16px;
   flex-direction: column;
   align-items: center;
 }

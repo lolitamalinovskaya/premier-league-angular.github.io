@@ -16,13 +16,19 @@ h2 {
 figure {
   margin: unset;
   max-width: 170px;
-  background-color: lightgray;
+  background-color: #fafafa;
   padding: 2rem;
-  min-height: 10rem;
+  min-height: 11rem;
   width: 12rem;
 }
 
 figcaption {
   padding-top: 0.5rem;
+  font-size: calc(7px + 2vmin);
   line-height: 2rem;
+}
+
+.links {
+  color: #333333;
+  text-decoration: none;
 }

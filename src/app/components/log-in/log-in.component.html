@@ -3,7 +3,7 @@
   <form class="sign-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
     <button class="sign-button" (click)="redirectGoogle()">Login with Google</button>
     <input class="sign-input" type="text" placeholder="Email" formControlName="email"/>
-    <input class="sign-input" type="text" placeholder="Password" formControlName="password"/>
+    <input class="sign-input" type="password" placeholder="Password" formControlName="password"/>
     <button class="sign-button" type="submit">LOG IN</button>
   </form>
 </div>

@@ -16,6 +16,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
+import { TeamDetailComponent } from './components/team-detail/team-detail.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
@@ -24,7 +26,7 @@ const routes: Routes = [
   { path: 'stats', component: StatsComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'logIn', component: LogInComponent },
-  /*{ path: 'products/:productId', component: ProductDetailsComponent },*/
+  { path: 'teams/:teamId', component: TeamDetailComponent },
 ];
 
 @NgModule({
@@ -37,6 +39,7 @@ const routes: Routes = [
     SignUpComponent,
     LogInComponent,
     ToolBarComponent,
+    TeamDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatProgressBarModule,
   ],
   providers: [
   ],

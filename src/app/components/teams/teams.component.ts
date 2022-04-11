@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TeamService, TeamsInterface} from "../../services/team.service";
+import {TeamsService} from "../../services/teams.service";
 import {AppService} from "../../app.service";
 
 @Component({
@@ -10,13 +10,19 @@ import {AppService} from "../../app.service";
 export class TeamsComponent implements OnInit {
 
  isLoading = false;
-  constructor(public teamService: TeamService,
-              public appService: AppService,) { }
+  constructor(public teamsService: TeamsService,
+              public appService: AppService,
+              ) { }
+
 
   ngOnInit(): void {
+    this.getTeams();
+  }
+
+  getTeams(): void {
     if(this.appService.teams.length === 0) {
       this.isLoading = true;
-      this.teamService.getTeams().subscribe(response => {
+      this.teamsService.getTeams().subscribe(response => {
         this.appService.teams = response.data;
         this.isLoading = false;
       })

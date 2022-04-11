@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
+import {catchError, Observable, of, throwError} from "rxjs";
+import {AppService} from "../app.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TeamService {
+export class TeamsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              public appService: AppService,
+              ) { }
 
   public getTeams(): Observable<any> {
     const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/teams';

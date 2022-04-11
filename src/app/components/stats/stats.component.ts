@@ -15,13 +15,13 @@ export class StatsComponent implements OnInit {
               public appService: AppService,) { }
 
   ngOnInit(): void {
-    if(this.appService.stats.length === 0) {
+    if (this.appService.stats.length === 0) {
       this.isLoading = true;
       this.statService.getStats().subscribe(response => {
         this.appService.stats = response.data;
+        this.appService.stats.sort((a,b) => b.stats.points - a.stats.points);
         this.isLoading = false;
       })
     }
   }
-
 }

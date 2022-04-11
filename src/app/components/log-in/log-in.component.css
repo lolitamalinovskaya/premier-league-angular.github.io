@@ -19,6 +19,11 @@
   border: none;
   height: 1.5rem;
   font-size: medium;
+  transition: 0.25s background-color ease-in-out;
+}
+
+.sign-input:hover, .sign-button:hover {
+  background-color: #9a8ea1;
 }
 
 .sign-button {

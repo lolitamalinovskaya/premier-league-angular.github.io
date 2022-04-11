@@ -3,6 +3,6 @@
 <div class="inner">
   <figure *ngFor="let team of appService.teams">
     <img src="{{team.logo}}" alt="logo" style="width: 6rem; height: 6rem;"/>
-    <figcaption>{{team.name}}</figcaption>
+    <a class="links" routerLink="/teams/{{team.id}}"><figcaption>{{team.name}}</figcaption> </a>
   </figure>
 </div>
