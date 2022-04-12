@@ -1,0 +1,28 @@
+<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
+<div class="match-detail">
+  <figure>
+    <img class="match-detail-logo" src="{{appService.matchDetails?.home_team?.logo}}" alt="Logo Home Team"/>
+    <figcaption class="match-detail-team">{{appService.matchDetails?.home_team?.name}}</figcaption>
+  </figure>
+
+  <strong class="match-detail-count">{{appService.matchDetails.stats?.goals_home_team}}</strong>
+ <div class="match-detail-inner">
+   <p class="match-detail-stadium">{{appService.matchDetails.stadium?.name}}</p>
+   <p class="match-detail-city">{{appService.matchDetails.stadium?.city}}</p>
+   <p *ngIf="!appService.matchDetails?.is_finished">{{matchService.parseDate(appService.matchDetails?.date)}}</p>
+ </div>
+
+  <strong class="match-detail-count">{{appService.matchDetails.stats?.goals_away_team}}</strong>
+
+  <figure>
+    <img class="match-detail-logo" src="{{appService.matchDetails?.away_team?.logo}}" alt="Logo Home Team"/>
+    <figcaption class="match-detail-team">{{appService.matchDetails?.away_team?.name}}</figcaption>
+  </figure>
+</div>
+
+<div class="match-detail-events" *ngIf="appService.matchDetails?.is_finished">
+  <h2>EVENTS</h2>
+ <div *ngFor="let event of appService.matchDetails?.game_events">
+  <p> {{event?.event_type?.code}} at {{event?.event_type?.minute}} minutes by {{matchDetailService.showNamePlayer(event?.player_id)}}! </p>
+ </div>
+</div>

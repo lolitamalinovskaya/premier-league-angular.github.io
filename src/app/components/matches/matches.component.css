@@ -8,6 +8,18 @@ h2 {
   width: 70vw;
   background-color: #fafafa;
   margin-bottom: 1rem;
+  transition: 0.25s all ease-in-out;
+}
+.inner:hover {
+  background-color: #c0c8cd;
+}
+
+.link {
+  color: #031d28;
+}
+
+strong {
+  font-size: calc(22px + 2vmin);
 }
 
 figure {

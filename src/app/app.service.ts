@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {MatchInterface} from "./services/match.service";
 import {StatisticInterface} from "./services/stat.service";
 import PlayerInterface from "./services/player.service";
 import {TeamsInterface} from "./services/teams.service";
 import {TeamDetailsInterface} from "./services/team-details.service";
+import {MatchDetailService} from "./services/match-detail.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AppService {
   accessToken: any = null;
   user: any = null;
   googleUrl: any = null;
-  teamDetails?: any = null;
+  teamDetails: any = {};
+  matchDetails: any = {};
 
   constructor() { }
 }

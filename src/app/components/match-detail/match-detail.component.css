@@ -1,0 +1,35 @@
+.match-detail {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.match-detail-logo {
+  width: 7rem;
+  height: 7rem;
+}
+
+.match-detail-team {
+
+}
+
+.match-detail-count {
+
+}
+
+.match-detail-inner {
+
+}
+
+.match-detail-stadium {
+
+}
+
+.match-detail-city {
+
+}
+
+.match-detail-events {
+  background-color: #fafafa;
+}

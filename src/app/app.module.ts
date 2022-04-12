@@ -18,6 +18,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { TeamDetailComponent } from './components/team-detail/team-detail.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { MatchDetailComponent } from './components/match-detail/match-detail.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'signUp', component: SignUpComponent },
   { path: 'logIn', component: LogInComponent },
   { path: 'teams/:teamId', component: TeamDetailComponent },
+  { path: 'matches/:matchId', component: MatchDetailComponent },
 ];
 
 @NgModule({
@@ -40,6 +42,7 @@ const routes: Routes = [
     LogInComponent,
     ToolBarComponent,
     TeamDetailComponent,
+    MatchDetailComponent,
   ],
   imports: [
     BrowserModule,

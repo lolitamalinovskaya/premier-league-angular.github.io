@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {AppService} from "../app.service";
 import {catchError, Observable, throwError} from "rxjs";
+import {MatchService} from "./match.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,13 @@ export class TeamDetailsService {
               public appService: AppService,
   ) { }
 
-  public getDetailsTeam(teamIdFromRoute: number): Observable<any> {
-    const url = `https://polar-shelf-59117.herokuapp.com/api/v1/teams/${teamIdFromRoute}`;
+  public getTeamDetail(teamIdFromRoute: number): Observable<any> {
+      const url = `https://polar-shelf-59117.herokuapp.com/api/v1/teams/${teamIdFromRoute}`;
 
-    return this.http.get<TeamDetailsInterface>(url)
-      .pipe(
-        catchError(this.handleError)
-      );
+      return this.http.get<TeamDetailsInterface>(url)
+        .pipe(
+          catchError(this.handleError)
+        );
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -32,20 +33,23 @@ export class TeamDetailsService {
 
 export interface TeamDetailsInterface {
   id: number,
-  name: string,
-  stadium: number,
-  manager: string,
-  players?: PlayerArrayInterface[];
   logo: string,
+  manager: string,
+  name: string,
+  players: PlayerArrayInterface[];
+  stadium: number,
 }
 
 export interface PlayerArrayInterface {
   id: number | null,
   name: string,
-  surname: string,
   position?: {
     id: number,
     name: string,
   },
-  team?: any;
+  surname: string,
+  team?: {
+    id: number,
+    name: string,
+  },
 }

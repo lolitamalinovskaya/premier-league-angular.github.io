@@ -32,9 +32,11 @@ export class TeamDetailComponent implements OnInit {
     const teamIdFromRoute = Number(routeParams.get('teamId'));
 
     this.isLoading = true;
-    this.teamDetailService.getDetailsTeam(teamIdFromRoute).subscribe(response => {
+    this.teamDetailService.getTeamDetail(teamIdFromRoute).subscribe(response => {
       this.appService.teamDetails = response.data;
       this.isLoading = false;
     })
+
+
   }
 }

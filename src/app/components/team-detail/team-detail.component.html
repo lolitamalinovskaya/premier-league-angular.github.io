@@ -1,10 +1,14 @@
 <mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
-<div style="background-color: #fafafa; width: 70rem;" *ngIf="appService.teamDetails">
-  <h2 style="color: black">{{appService.teamDetails.name}}</h2>
-  <img src="{{appService.teamDetails.logo}}" alt="logo" style="width: 10rem;"/>
-  <p>{{appService.teamDetails.manager}}</p>
-  <div *ngFor="let player of appService.teamDetails.players" style="border: 1px solid black">
-    <p>{{player.name}} {{player.surname}} </p>
-    <p>{{player.position.name}} </p>
+<div *ngIf="appService.teamDetails">
+  <div class="team-detail-header">
+    <img class="team-detail-logo" src="{{appService.teamDetails.logo}}" alt="logo"/>
+    <h2 class="team-detail-team">{{appService.teamDetails?.name}}</h2>
+    <p class="team-detail-mn">Manager: {{appService.teamDetails.manager}}</p>
+  </div>
+  <div class="team-detail-inner">
+    <div class="team-detail-item" *ngFor="let player of appService.teamDetails.players">
+      <p class="team-detail-name">{{player.name}} {{player.surname}} </p>
+      <p class="team-detail-position">{{player.position?.name}} </p>
+    </div>
   </div>
 </div>

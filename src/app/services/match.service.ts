@@ -25,6 +25,16 @@ export class MatchService {
 
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
+
+  public parseDate(string: string) {
+    let fullDate = new Date(string);
+    let month = fullDate.toLocaleString('en', {month: "short"});
+    let year = fullDate.getFullYear();
+    let time = `${fullDate.getHours()}:${fullDate.getMinutes()}`;
+    let date = `${fullDate.getDate()} ${month} ${year}`;
+
+    return `${date} ${time}`;
+  }
 }
 
 export interface MatchInterface {
