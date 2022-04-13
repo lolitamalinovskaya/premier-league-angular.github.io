@@ -1,3 +1,9 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
 h2 {
   margin: 2rem auto;
   font-size: calc(12px + 2vmin);
@@ -8,27 +14,85 @@ h2 {
   width: 70vw;
   background-color: #fafafa;
   margin-bottom: 1rem;
+  padding: 2rem;
   transition: 0.25s all ease-in-out;
 }
+
 .inner:hover {
   background-color: #c0c8cd;
 }
 
+.logo {
+  width: 8rem;
+  height: 8rem;
+}
+
 .link {
   color: #031d28;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
 }
 
 strong {
   font-size: calc(22px + 2vmin);
+  flex-basis: 20%;
 }
 
 figure {
   max-width: 170px;
-  width: 10rem;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: unset;
 }
 
 figcaption {
   padding-top: 0.5rem;
   line-height: 2rem;
+  font-weight: 500;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 2rem;
+}
+
+/*mobile*/
+
+@media (max-width: 768px) {
+  .spinner {
+    margin-top: 0.5rem;
+  }
+
+  section {
+   width: 100%;
+  }
+
+  h2 {
+    margin: 1rem auto;
+  }
+
+  .logo {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .inner {
+    padding: 1rem;
+    width: unset;
+  }
+
+  .date, figcaption {
+    line-height: unset;
+  }
+}
+
+@media (max-width: 420px) {
+  .inner {
+    padding: 0.5rem;
+  }
 }

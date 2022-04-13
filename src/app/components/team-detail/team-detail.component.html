@@ -1,5 +1,5 @@
 <mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
-<div *ngIf="appService.teamDetails">
+<div *ngIf="appService.teamDetails && !isLoading">
   <div class="team-detail-header">
     <img class="team-detail-logo" src="{{appService.teamDetails.logo}}" alt="logo"/>
     <h2 class="team-detail-team">{{appService.teamDetails?.name}}</h2>

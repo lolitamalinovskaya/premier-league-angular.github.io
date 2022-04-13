@@ -1,10 +1,13 @@
+<div *ngIf="isLoading" class="spinner">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<section *ngIf="appService.stats && !isLoading">
 <h2>STATS</h2>
-<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
-<table mat-table [dataSource]="appService.stats" class="mat-elevation-z8" style="width: 60rem; margin-bottom: 10rem;">
+<table mat-table [dataSource]="appService.stats" class="mat-elevation-z8" class="player-table">
 
   <ng-container matColumnDef="name" >
     <th mat-header-cell *matHeaderCellDef style="width: 30%; text-align: center"> Team </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element" style="font-weight: 600"> {{element.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="matches">
@@ -50,3 +53,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</section>

@@ -17,13 +17,12 @@
   -o-background-size: cover;
   background-size: cover;
   min-height: 100vh;
-/*  width: 100vw;*/
+  min-width: 320px;
 }
 
 .wrapper {
   text-align: center;
   margin: 0 auto;
-/*  padding: 0 15px;*/
   max-width: 1440px;
   min-width: 300px;
   font-size: calc(10px + 2vmin);
@@ -32,23 +31,15 @@
   position: relative;
 }
 
-@media (max-width: 768px) {
-  .wrapper {
-   padding: unset;
-  }
-}
-
-.toolbar {
+.header {
   position: fixed;
   left: 0;
   right: 0;
   padding: 0 3rem;
-  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #9a8ea1;
-  color: white;
   font-weight: 600;
   z-index: 1;
 }
@@ -67,13 +58,10 @@
 }
 
 .header-link {
-  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0 1.5rem 1.5rem;
   border-left: 1px solid white;
-}
-
-.header-link-sign {
-  margin-right: 1.5rem;
-  color: white;
 }
 
 .content {
@@ -85,8 +73,27 @@
 }
 
 @media (max-width: 768px) {
-  .content {
-/*    padding: unset;*/
+
+  .wrapper {
+    padding: unset;
+  }
+
+  .header {
+    padding: 0 15px;
+  }
+
+  .header-link {
+    font-size: calc(10px + 2vmin);
+    flex-basis: 35%;
+    min-width: 170px;
+  }
+
+  .logo {
+    font-size: unset;
+    line-height: unset;
+    text-align: left;
+    padding-left: 4rem;
+    padding-right: 0.3rem;
   }
 }
 
@@ -98,6 +105,7 @@ a:hover {
   transition: 0.25s color ease-in-out;
 }
 
-a:hover {
+a:hover, a:focus {
   color: #334162;
+  cursor: pointer;
 }

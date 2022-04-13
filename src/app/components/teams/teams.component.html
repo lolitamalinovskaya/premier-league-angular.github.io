@@ -1,8 +1,15 @@
-<h2>TEAMS</h2>
-<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
-<div class="inner">
-  <figure *ngFor="let team of appService.teams">
-    <img src="{{team.logo}}" alt="logo" style="width: 6rem; height: 6rem;"/>
-    <a class="links" routerLink="/teams/{{team.id}}"><figcaption>{{team.name}}</figcaption> </a>
-  </figure>
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
+
+<section *ngIf="appService.teams && !isLoading">
+  <h2>TEAMS</h2>
+  <div class="inner">
+    <a *ngFor="let team of appService.teams" class="links" routerLink="/teams/{{team.id}}">
+    <figure >
+      <img class="logo" src="{{team.logo}}" alt="logo"/>
+        <figcaption>{{team.name}}</figcaption>
+    </figure>
+    </a>
+  </div>
+</section>

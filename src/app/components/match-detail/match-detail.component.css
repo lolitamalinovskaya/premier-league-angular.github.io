@@ -2,34 +2,126 @@
   margin: 2rem 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #fafafa;
+  padding: 3rem;
+  width: 70vw;
+}
+
+figure {
+ margin: unset;
+  flex-basis: 30%;
 }
 
 .match-detail-logo {
-  width: 7rem;
-  height: 7rem;
+  width: 10rem;
+  height: 10rem;
+  animation: rotation 5s infinite linear;
+}
+
+@keyframes rotation {
+  0% {
+    transform: perspective(200px) rotateY(0);
+  }
+
+  25% {
+    transform: perspective(200px) rotateY(20deg);
+  }
+
+  75% {
+    transform: perspective(200px) rotateY(-20deg);
+  }
+
+  100% {
+    transform: perspective(200px) rotateY(0);
+  }
 }
 
 .match-detail-team {
-
+  padding-top: 1rem;
+  font-size: calc(14px + 2vmin);
+  line-height: 2rem;
+  font-weight: 600;
 }
 
 .match-detail-count {
-
+  font-size: calc(30px + 2vmin);
+  flex-basis: 40%;
 }
 
 .match-detail-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.match-detail-inner p {
+  margin: 1rem;
+}
+
+.match-detail-time {
+  font-weight: 500;
 }
 
 .match-detail-stadium {
-
-}
-
-.match-detail-city {
-
+  margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
 }
 
 .match-detail-events {
   background-color: #fafafa;
+  padding: 2rem;
+}
+
+.match-detail-events p {
+  margin: 1rem 0;
+}
+
+
+/*mobile*/
+
+@media (max-width: 768px) {
+
+  .match-detail {
+    margin: 1rem 0;
+    padding: 1rem;
+    width: unset;
+  }
+
+  .match-detail-logo {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .match-detail-inner p {
+    margin: 0.3rem;
+  }
+
+  .match-detail-team {
+    padding-top: unset;
+    font-size: unset;
+    line-height: 1.2rem;
+  }
+
+  .match-detail-count {
+    font-size: calc(16px + 2vmin);
+    flex-basis: 20%;
+  }
+
+  .match-detail-events {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .match-detail {
+    padding: 0.5rem;
+  }
+
+  .match-detail-events {
+    padding: 0.5rem;
+  }
 }

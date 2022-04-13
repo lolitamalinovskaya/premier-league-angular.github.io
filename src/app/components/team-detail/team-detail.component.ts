@@ -21,7 +21,12 @@ export class TeamDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.isLoading, this.appService.teamDetails);
+
     this.getTeamDetail();
+
+
+
   }
 
   isLoading = false;

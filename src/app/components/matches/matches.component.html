@@ -1,25 +1,24 @@
-<h2>MATCHES</h2>
-<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
-
-  <div *ngFor="let match of appService.matches" class="inner" >
-    <a class="link" routerLink="/matches/{{match.id}}" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none;">
-    <figure style="display: flex; flex-direction: column">
-      <img style="width: 7rem" src="{{match.home_team.logo}}"/>
-      <figcaption>{{match.home_team.name}}</figcaption>
-    </figure>
-
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<section *ngIf="appService.matches && !isLoading">
+  <h2>MATCHES</h2>
+  <div *ngFor="let match of appService.matches" class="inner">
+    <a class="link" routerLink="/matches/{{match.id}}">
+      <figure>
+        <img class="logo" src="{{match.home_team.logo}}"/>
+        <figcaption>{{match.home_team.name}}</figcaption>
+      </figure>
       <strong>{{match.stats?.goals_home_team}}</strong>
-
-    <div style="display: flex; flex-direction: column; justify-content: center">
-      <p>{{matchService.parseDate(match.date)}}</p>
-      <p>{{match.stadium}}</p>
-    </div>
-
+      <div class="date">
+        <p>{{matchService.parseDate(match.date)}}</p>
+        <p>{{match.stadium}}</p>
+      </div>
       <strong>{{match.stats?.goals_away_team}}</strong>
-
-    <figure style="display: flex; flex-direction: column">
-      <img style="width: 7rem" src="{{match.away_team.logo}}"/>
-      <figcaption>{{match.away_team.name}}</figcaption>
-    </figure>
+      <figure>
+        <img class="logo" src="{{match.away_team.logo}}"/>
+        <figcaption>{{match.away_team.name}}</figcaption>
+      </figure>
     </a>
   </div>
+</section>

@@ -21,7 +21,6 @@ export class MatchDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMatchDetail();
-    console.log(this.appService.matchDetails);
   }
 
   isLoading = false;

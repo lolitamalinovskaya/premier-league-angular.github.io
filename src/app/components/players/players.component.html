@@ -1,9 +1,10 @@
+<div *ngIf="isLoading" style="margin-top: 3rem; display: flex; justify-content: center">
+  <mat-progress-spinner  mode="indeterminate"></mat-progress-spinner>
+</div>
+<section *ngIf="appService.players && !isLoading">
 <h2>PLAYERS</h2>
-
-<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem;" mode="indeterminate"></mat-progress-spinner>
-
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="appService.players" style="width: 55rem;">
+  <table class="player-table" mat-table [dataSource]="appService.players ">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef style="text-align: center"> No. </th>
@@ -35,3 +36,4 @@
                  style="margin-bottom: 10rem;">
   </mat-paginator>
 </div>
+</section>

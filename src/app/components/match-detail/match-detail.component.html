@@ -1,4 +1,7 @@
-<mat-progress-spinner *ngIf="isLoading" style="margin-top: 3rem" mode="indeterminate"></mat-progress-spinner>
+<div *ngIf="isLoading" style="margin-top: 3rem; display: flex; justify-content: space-between">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<section *ngIf="appService.matchDetails && !isLoading">
 <div class="match-detail">
   <figure>
     <img class="match-detail-logo" src="{{appService.matchDetails?.home_team?.logo}}" alt="Logo Home Team"/>
@@ -7,9 +10,10 @@
 
   <strong class="match-detail-count">{{appService.matchDetails.stats?.goals_home_team}}</strong>
  <div class="match-detail-inner">
-   <p class="match-detail-stadium">{{appService.matchDetails.stadium?.name}}</p>
-   <p class="match-detail-city">{{appService.matchDetails.stadium?.city}}</p>
-   <p *ngIf="!appService.matchDetails?.is_finished">{{matchService.parseDate(appService.matchDetails?.date)}}</p>
+   <p class="match-detail-stadium">{{appService.matchDetails.stadium?.name}}, {{appService.matchDetails.stadium?.city}}</p>
+   <p class="match-detail-count">VS</p>
+   <p class="match-detail-time" *ngIf="!appService.matchDetails?.is_finished">{{matchService.parseDate(appService.matchDetails?.date)}}</p>
+   <p *ngIf="appService.matchDetails?.is_finished">The match is over!</p>
  </div>
 
   <strong class="match-detail-count">{{appService.matchDetails.stats?.goals_away_team}}</strong>
@@ -20,9 +24,10 @@
   </figure>
 </div>
 
-<div class="match-detail-events" *ngIf="appService.matchDetails?.is_finished">
+<div class="match-detail-events" *ngIf="appService.matchDetails?.is_finished && appService.matchDetails?.game_events.length !== 0">
   <h2>EVENTS</h2>
  <div *ngFor="let event of appService.matchDetails?.game_events">
-  <p> {{event?.event_type?.code}} at {{event?.event_type?.minute}} minutes by {{matchDetailService.showNamePlayer(event?.player_id)}}! </p>
+  <p><b>{{event?.event_type?.code}}</b> in the {{event?.minute}}th minute by {{matchDetailService.showNamePlayer(event?.player_id)}}! </p>
  </div>
 </div>
+</section>

@@ -7,22 +7,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.material-icons {
+  padding-right: 0.5rem;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 16px;
-  z-index: 5;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .card {
   all: unset;
   border-radius: 4px;
   border: 1px solid #eee;
-  background-color: #fafafa;
+  background-color: #e2e0e3;
   height: 40px;
   width: 200px;
-  margin: 0 8px 16px;
+  /*margin: 0 8px 16px;*/
   padding: 16px;
   display: flex;
   flex-direction: row;

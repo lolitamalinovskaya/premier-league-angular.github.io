@@ -1,5 +1,31 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
 h2 {
   margin: 2rem auto;
   font-size: calc(12px + 2vmin);
   color: white;
+}
+
+.player-table {
+  width: 60rem;
+}
+
+@media (max-width: 990px) {
+  .player-table {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .spinner {
+    margin-top: 0.5rem;
+  }
+
+  h2 {
+    margin: 1rem auto;
+  }
 }

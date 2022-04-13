@@ -1,12 +1,12 @@
 <div class="wrapper-bg">
   <div class="wrapper">
-    <div class="toolbar" role="banner">
+    <div class="header" role="banner">
       <a><h1 class="logo" routerLink="" routerLinkActive="active">PREMIER LEAGUE APP</h1></a>
       <div class="header-link">
         <a class="header-link-sign" routerLink="/logIn" routerLinkActive="active" *ngIf="appService.user === null">Log IN</a>
         <a class="header-link-sign" *ngIf="appService.user !== null">{{appService.user?.name}}</a>
-        <a routerLink="/signUp" routerLinkActive="active" *ngIf="appService.user === null">Sign UP</a>
-        <a (click)="logOut()" *ngIf="appService.user !== null">Log OUT</a>
+        <a class="header-link-sign" routerLink="/signUp" routerLinkActive="active" *ngIf="appService.user === null">Sign UP</a>
+        <a class="header-link-sign" (click)="logOut()" *ngIf="appService.user !== null">Log OUT</a>
       </div>
     </div>
     <div class="content" role="main">
