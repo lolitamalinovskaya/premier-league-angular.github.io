@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 
 @Injectable({
@@ -9,10 +9,15 @@ export class MatchService {
 
   constructor(private http: HttpClient) { }
 
-  public getMatches(): Observable<any> {
+  public getMatches(page?: number): Observable<any> {
     const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/matches';
+    let params = new HttpParams();
 
-    return this.http.get<MatchInterface>(url)
+    if(page !== undefined) {
+      params = params.set('page', page)
+    }
+
+    return this.http.get<MatchInterface>(url, { params: params })
       .pipe(
         catchError(this.handleError)
       );

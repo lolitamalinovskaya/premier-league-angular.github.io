@@ -1,0 +1,108 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+h2 {
+  margin: 2rem auto;
+  font-size: calc(12px + 2vmin);
+  color: white;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 10rem;
+}
+
+.logo {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+}
+
+figure {
+  margin: unset;
+  max-width: 170px;
+  background-color: #fafafa;
+  padding: 1.5rem;
+  height: 12rem;
+  width: 12rem;
+  position: relative;
+}
+
+figcaption {
+  padding-top: 0.5rem;
+  font-size: calc(7px + 2vmin);
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.links {
+  color: #333333;
+  text-decoration: none;
+  transition: color 0.25ms ease-in-out;
+  position: relative;
+}
+
+.links:hover figure {
+  color: #ce7468;
+}
+
+figure .like {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+}
+
+.like {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: #1DA49C;
+}
+
+.cls-1 {
+  fill: #1DA49C;
+  stroke: #fafafa;
+}
+
+@media (max-width: 768px) {
+  .spinner {
+    margin-top: 0.5rem;
+  }
+
+  h2 {
+    margin: 1rem auto;
+  }
+
+  figure {
+    padding: 1.5rem;
+  }
+
+  figcaption {
+    line-height: unset;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .inner {
+    column-gap: 0;
+    row-gap: 1rem;
+  }
+
+  figure {
+    height: fit-content;
+    max-width: unset;
+    width: unset;
+  }
+
+  .links {
+    width: 100%;
+  }
+}

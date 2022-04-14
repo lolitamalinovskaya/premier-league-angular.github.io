@@ -21,4 +21,13 @@
       </figure>
     </a>
   </div>
+  <mat-paginator *ngIf="appService.matchesLinks"
+                 [length]="appService.matchesMeta.total"
+                 [pageSize]="appService.matchesMeta.per_page"
+                 [pageIndex]="page"
+                 (page)="onPage($event)"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements"
+                 style="margin-bottom: 10rem;">
+  </mat-paginator>
 </section>

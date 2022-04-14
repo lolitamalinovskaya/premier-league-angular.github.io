@@ -29,8 +29,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator *ngIf="appService.playersLinks"
+                 [length]="appService.playersMeta?.total"
+                 [pageSize]="appService.playersMeta.per_page"
+                 [pageIndex]="page"
+                 (page)="onPage($event)"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements"
                  style="margin-bottom: 10rem;">

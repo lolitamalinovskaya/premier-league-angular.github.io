@@ -6,13 +6,14 @@ import {catchError, Observable, throwError} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class FavoriteTeamsService {
+export class FavoriteTeamsResultService {
 
   constructor(private http: HttpClient,
               public appService: AppService,) { }
 
-  public getFavoriteTeams(): Observable<any> {
-    const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/user-favorite-teams';
+
+  public getFavoriteTeamResults(): Observable<any> {
+    const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/matches/results';
 
     const headers = {"Authorization": `Bearer ${this.appService.accessToken}`, "Accept": "application/json"}
 

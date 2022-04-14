@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, Observable, of, throwError} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {AppService} from "../app.service";
 
 @Injectable({
@@ -19,6 +19,24 @@ export class TeamsService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  public setFavoriteTeams(teamId: any): Observable<any> {
+    const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/user-favorite-teams';
+    const headers = {
+        "Authorization": `Bearer ${this.appService.accessToken}`,
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/plain, */*"
+    };
+    const body = {
+      "user_id": this.appService.user?.id,
+      "team_id": teamId
+    };
+
+  return this.http.post<any>(url, body, { headers })
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

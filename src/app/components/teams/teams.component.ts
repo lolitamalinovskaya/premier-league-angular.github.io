@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TeamsService} from "../../services/teams.service";
 import {AppService} from "../../app.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-teams',
@@ -10,15 +11,18 @@ import {AppService} from "../../app.service";
 export class TeamsComponent implements OnInit {
 
  isLoading = false;
- isLike = false;
- teamId = null;
+ isLike:any = {};
 
   constructor(public teamsService: TeamsService,
               public appService: AppService,
+              private router: Router,
               ) { }
 
-
   ngOnInit(): void {
+    if (this.appService.user === null) {
+     this.router.navigate(['/logIn']);
+      return;
+    }
     this.getTeams();
   }
 
@@ -33,12 +37,11 @@ export class TeamsComponent implements OnInit {
   }
 
   toggleLike(teamId: any): void {
-    this.appService.teams.find((team) => {
-      if (team.id === teamId) {
-        this.isLike = !this.isLike;
-/*        return this.teamId = teamId;*/
-        console.log(team.id)
-    }
-    })
+    this.isLike[teamId] = !this.isLike[teamId];
+   this.setFavoriteTeams(teamId);
+  }
+
+  setFavoriteTeams(teamId: any): void {
+   this.teamsService.setFavoriteTeams(teamId).subscribe();
   }
 }

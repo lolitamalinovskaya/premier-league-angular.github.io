@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
 import {MatchDetailService} from "../../services/match-detail.service";
 import {AppService} from "../../app.service";
@@ -16,10 +16,15 @@ export class MatchDetailComponent implements OnInit {
               public matchDetailService: MatchDetailService,
               public appService: AppService,
               public matchService: MatchService,
+              private router: Router,
   ) {
   }
 
   ngOnInit(): void {
+    if (this.appService.user === null) {
+      this.router.navigate(['/logIn']);
+      return;
+    }
     this.getMatchDetail();
   }
 

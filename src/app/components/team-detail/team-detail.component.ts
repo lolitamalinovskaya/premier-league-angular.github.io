@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {TeamsService} from "../../services/teams.service";
 import {AppService} from "../../app.service";
@@ -17,16 +17,16 @@ export class TeamDetailComponent implements OnInit {
     private teamsService: TeamsService,
     private teamDetailService: TeamDetailsService,
     public appService: AppService,
+    private router: Router,
   ) {
   }
 
   ngOnInit(): void {
-    console.log(this.isLoading, this.appService.teamDetails);
-
+    if (this.appService.user === null) {
+      this.router.navigate(['/logIn']);
+      return;
+    }
     this.getTeamDetail();
-
-
-
   }
 
   isLoading = false;

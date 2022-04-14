@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 
 @Injectable({
@@ -9,10 +9,15 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
-  public getPlayers(): Observable<any> {
+  public getPlayers(page?: number): Observable<any> {
     const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/players';
+    let params = new HttpParams();
 
-    return this.http.get<PlayerInterface>(url)
+    if(page !== undefined) {
+      params = params.set('page', page)
+    }
+
+    return this.http.get<PlayerInterface>(url, { params: params })
       .pipe(
         catchError(this.handleError)
       );

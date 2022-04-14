@@ -1,0 +1,25 @@
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<section *ngIf="appService.favoriteTeamFixtures && !isLoading">
+  <h2>FAVORITE TEAMS FiXTURES</h2>
+  <div *ngFor="let fixture of appService.favoriteTeamFixtures" class="inner">
+    <a class="link" routerLink="/matches/{{fixture.id}}">
+      <figure>
+        <img class="logo" src="{{fixture.home_team.logo}}"/>
+        <figcaption>{{fixture.home_team.name}}</figcaption>
+      </figure>
+      <strong>{{fixture.stats?.goals_home_team}}</strong>
+      <div class="date">
+        <p>{{matchService.parseDate(fixture.date)}}</p>
+        <p>{{fixture.stadium}}</p>
+      </div>
+      <strong>{{fixture.stats?.goals_away_team}}</strong>
+      <figure>
+        <img class="logo" src="{{fixture.away_team.logo}}"/>
+        <figcaption>{{fixture.away_team.name}}</figcaption>
+      </figure>
+    </a>
+  </div>
+</section>
+

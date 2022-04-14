@@ -1,1 +1,17 @@
-<p>favorite-teams works!</p>
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<section *ngIf="appService.favoriteTeams && !isLoading">
+  <h2>FAVORITE TEAMS</h2>
+  <div class="inner">
+    <figure *ngFor="let team of appService.favoriteTeams">
+     <!-- <img *ngIf="isLike[team.id]; else elseBlock"  class="like" src="./assets/icons/red-heart.svg" alt="like"/>
+      <ng-template #elseBlock><img class="like" src="./assets/icons/gray-heart.svg" alt="like" /></ng-template>-->
+      <a class="links" routerLink="/teams/{{team.id}}">
+        <img class="logo" src="{{team.logo}}" alt="logo"/>
+        <figcaption>{{team.name}}</figcaption>
+      </a>
+    </figure>
+  </div>
+</section>

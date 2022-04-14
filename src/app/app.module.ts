@@ -20,6 +20,8 @@ import { TeamDetailComponent } from './components/team-detail/team-detail.compon
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { MatchDetailComponent } from './components/match-detail/match-detail.component';
 import { FavoriteTeamsComponent } from './components/favorite-teams/favorite-teams.component';
+import { FavoriteTeamsResultComponent } from './components/favorite-teams-result/favorite-teams-result.component';
+import { FavoriteTeamsFixturesComponent } from './components/favorite-teams-fixtures/favorite-teams-fixtures.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
@@ -30,6 +32,9 @@ const routes: Routes = [
   { path: 'logIn', component: LogInComponent },
   { path: 'teams/:teamId', component: TeamDetailComponent },
   { path: 'matches/:matchId', component: MatchDetailComponent },
+  { path: 'favorite', component: FavoriteTeamsComponent },
+  { path: 'results', component: FavoriteTeamsResultComponent },
+  { path: 'fixtures', component: FavoriteTeamsFixturesComponent },
 ];
 
 @NgModule({
@@ -45,6 +50,8 @@ const routes: Routes = [
     TeamDetailComponent,
     MatchDetailComponent,
     FavoriteTeamsComponent,
+    FavoriteTeamsResultComponent,
+    FavoriteTeamsFixturesComponent,
   ],
   imports: [
     BrowserModule,

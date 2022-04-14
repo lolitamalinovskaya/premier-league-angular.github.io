@@ -1,0 +1,25 @@
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<section *ngIf="appService.favoriteTeamResults && !isLoading">
+  <h2>FAVORITE TEAMS RESULTS</h2>
+  <div *ngFor="let result of appService.favoriteTeamResults" class="inner">
+    <a class="link" routerLink="/matches/{{result.id}}">
+      <figure>
+        <img class="logo" src="{{result.home_team.logo}}"/>
+        <figcaption>{{result.home_team.name}}</figcaption>
+      </figure>
+      <strong>{{result.stats?.goals_home_team}}</strong>
+      <div class="date">
+        <p>{{matchService.parseDate(result.date)}}</p>
+        <p>{{result.stadium}}</p>
+      </div>
+      <strong>{{result.stats?.goals_away_team}}</strong>
+      <figure>
+        <img class="logo" src="{{result.away_team.logo}}"/>
+        <figcaption>{{result.away_team.name}}</figcaption>
+      </figure>
+    </a>
+  </div>
+</section>
+
