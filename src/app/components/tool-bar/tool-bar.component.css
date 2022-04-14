@@ -20,93 +20,46 @@
 }
 
 .card {
-  all: unset;
   border-radius: 4px;
-  border: 1px solid #eee;
   background-color: #e2e0e3;
   height: 40px;
   width: 200px;
-  /*margin: 0 8px 16px;*/
   padding: 16px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
-  line-height: 24px;
 }
 
 .card-container .card:not(:last-child) {
   margin-right: 0;
 }
 
-.card.card-small {
-  height: 3rem;
-  width: 168px;
-}
-
-.card-container .card:not(.highlight-card) {
-  cursor: pointer;
-}
-
-.card-container .card:not(.highlight-card):hover {
+.card-container .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-}
-
-.card-container .card:not(.highlight-card):hover .material-icons path {
-  fill: rgb(105, 103, 103);
-}
-
-.card.highlight-card {
-  /*  background-color: #1976d2;*/
-  color: #334162;
-  font-weight: 600;
-  border: none;
-  width: auto;
-  min-width: 30%;
-  position: relative;
-}
-
-.card.card.highlight-card span {
-  margin-left: 60px;
-}
-
-svg#ball {
-  width: 80px;
-  position: absolute;
-  left: -10px;
-  top: -24px;
-}
-
-svg#ball-smoke {
-  height: calc(100vh - 95px);
-  position: absolute;
-  top: 10px;
-  right: 180px;
-  z-index: -10;
+  background-color: #767d87;
+  color: #fafafa;
 }
 
 a,
 a:visited,
 a:hover {
-  color: black;
+  color: #102e37;
   text-decoration: none;
 }
 
-a:hover {
-  color: #8b848c;
-}
-
-
 @media screen and (max-width: 767px) {
   .card-container {
-    width: 100%;
+    gap: 0.5rem;
   }
 
   .card {
-    height: 16px;
-    margin: 8px 0;
+    height: 1.5rem;
+    width: 100%;
+  }
+
+  .card-container .card:hover {
+    transform: unset;
   }
 }
 

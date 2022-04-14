@@ -22,6 +22,7 @@ h2 {
 .logo {
   width: 8rem;
   height: 8rem;
+  position: relative;
 }
 
 figure {
@@ -31,6 +32,7 @@ figure {
   padding: 1.5rem;
   height: 12rem;
   width: 12rem;
+  position: relative;
 }
 
 figcaption {
@@ -44,10 +46,28 @@ figcaption {
   color: #333333;
   text-decoration: none;
   transition: color 0.25ms ease-in-out;
+  position: relative;
 }
 
 .links:hover figure {
   color: #ce7468;
+}
+
+figure .like {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+}
+
+.like {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: #1DA49C;
+}
+
+.cls-1 {
+  fill: #1DA49C;
+  stroke: #fafafa;
 }
 
 @media (max-width: 768px) {

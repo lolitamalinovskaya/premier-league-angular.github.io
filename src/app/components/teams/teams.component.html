@@ -5,11 +5,13 @@
 <section *ngIf="appService.teams && !isLoading">
   <h2>TEAMS</h2>
   <div class="inner">
-    <a *ngFor="let team of appService.teams" class="links" routerLink="/teams/{{team.id}}">
-    <figure >
+    <figure *ngFor="let team of appService.teams" (click)="toggleLike(team.id)">
+      <img *ngIf="isLike; else elseBlock"  class="like" src="./assets/icons/red-heart.svg" alt="like"/>
+      <ng-template #elseBlock><img class="like" src="./assets/icons/gray-heart.svg" alt="like" /></ng-template>
+      <a class="links" routerLink="/teams/{{team.id}}">
       <img class="logo" src="{{team.logo}}" alt="logo"/>
-        <figcaption>{{team.name}}</figcaption>
+      <figcaption>{{team.name}}</figcaption>
+      </a>
     </figure>
-    </a>
   </div>
 </section>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AppService} from "./app.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import {AppService} from "./app.service";
 export class AppComponent {
   title = 'premier-league';
 
-  constructor(public appService: AppService) {}
+  constructor(public appService: AppService,
+              private router: Router) {}
 
 
   logOut() {
       this.appService.user = null;
+      this.router.navigate(['/']);
     }
 }

@@ -1,10 +1,11 @@
 <div class="sign-wrapper">
-  <h3>SIGN UP AND FOLLOWING FAVORITE TEAMS!</h3>
+  <h3 class="sign-header">SIGN UP AND FOLLOW YOUR FAVORITE TEAMS!</h3>
   <form class="sign-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
     <input class="sign-input" type="text" placeholder="Name" formControlName="name"/>
     <input class="sign-input" type="text" placeholder="Email" formControlName="email"/>
     <input class="sign-input" type="password" placeholder="Password" formControlName="password"/>
     <Button class="sign-button" type="submit">SIGN UP</Button>
   </form>
+  <p class="sign-text">Already have an account ? <a routerLink="/logIn"> Log in </a></p>
 </div>
 

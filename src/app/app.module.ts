@@ -19,6 +19,7 @@ import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { TeamDetailComponent } from './components/team-detail/team-detail.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { MatchDetailComponent } from './components/match-detail/match-detail.component';
+import { FavoriteTeamsComponent } from './components/favorite-teams/favorite-teams.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
     ToolBarComponent,
     TeamDetailComponent,
     MatchDetailComponent,
+    FavoriteTeamsComponent,
   ],
   imports: [
     BrowserModule,

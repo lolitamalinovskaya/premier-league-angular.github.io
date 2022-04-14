@@ -10,6 +10,9 @@ import {AppService} from "../../app.service";
 export class TeamsComponent implements OnInit {
 
  isLoading = false;
+ isLike = false;
+ teamId = null;
+
   constructor(public teamsService: TeamsService,
               public appService: AppService,
               ) { }
@@ -27,5 +30,15 @@ export class TeamsComponent implements OnInit {
         this.isLoading = false;
       })
     }
+  }
+
+  toggleLike(teamId: any): void {
+    this.appService.teams.find((team) => {
+      if (team.id === teamId) {
+        this.isLike = !this.isLike;
+/*        return this.teamId = teamId;*/
+        console.log(team.id)
+    }
+    })
   }
 }
