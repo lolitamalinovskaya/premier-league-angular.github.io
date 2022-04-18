@@ -16,8 +16,14 @@ export class AppService {
   playersMeta:any = {};
   matchesLinks:any = {};
   matchesMeta:any = {};
-  accessToken: any = null;
-  user: any = null;
+  accessToken: any = localStorage.getItem('access_token');
+  user: any = (() => {
+    const json = localStorage.getItem('user');
+    if (json === null) {
+      return null;
+    }
+    return JSON.parse(json);
+  })();
   googleUrl: any = null;
   teamDetails: any = {};
   matchDetails: any = {};
@@ -26,4 +32,21 @@ export class AppService {
   favoriteTeamFixtures = new Array<any>();
 
   constructor() { }
+
+  setToken(token: string): void {
+    localStorage.setItem(`access_token`, token);
+    this.accessToken = token;
+  }
+
+  setUser(user: any): void {
+    localStorage.setItem(`user`, JSON.stringify(user));
+    this.user = user;
+  }
+
+  logOut(): void {
+    this.user = null;
+    this.accessToken = null;
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+  }
 }

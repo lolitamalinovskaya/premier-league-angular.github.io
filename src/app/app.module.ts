@@ -22,8 +22,12 @@ import { MatchDetailComponent } from './components/match-detail/match-detail.com
 import { FavoriteTeamsComponent } from './components/favorite-teams/favorite-teams.component';
 import { FavoriteTeamsResultComponent } from './components/favorite-teams-result/favorite-teams-result.component';
 import { FavoriteTeamsFixturesComponent } from './components/favorite-teams-fixtures/favorite-teams-fixtures.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { ServerErrorComponent } from './server-error/server-error.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'players', component: PlayersComponent },
   { path: 'matches', component: MatchesComponent },
   { path: 'teams', component: TeamsComponent },
@@ -35,6 +39,8 @@ const routes: Routes = [
   { path: 'favorite', component: FavoriteTeamsComponent },
   { path: 'results', component: FavoriteTeamsResultComponent },
   { path: 'fixtures', component: FavoriteTeamsFixturesComponent },
+  { path: '500', component: ServerErrorComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
@@ -52,6 +58,9 @@ const routes: Routes = [
     FavoriteTeamsComponent,
     FavoriteTeamsResultComponent,
     FavoriteTeamsFixturesComponent,
+    NotFoundComponent,
+    HomeComponent,
+    ServerErrorComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class AppComponent {
               private router: Router) {}
 
   logOut() {
-    /*  this.appService.user = null;
-      this.router.navigate(['']);*/
+    this.appService.logOut();
+    this.router.navigate(['']);
     }
 }
