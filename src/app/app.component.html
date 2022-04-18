@@ -2,6 +2,7 @@
   <div class="wrapper">
     <div class="header" role="banner">
       <a><h1 class="logo" routerLink="" routerLinkActive="active">PREMIER LEAGUE APP</h1></a>
+      <a class="header-link-stats" routerLink="/stats" routerLinkActive="active">CLUB STATS</a>
       <div class="header-link">
         <a class="header-link-sign" routerLink="/logIn" routerLinkActive="active" *ngIf="appService.user === null">Log IN</a>
         <a class="header-link-sign" *ngIf="appService.user !== null">{{appService.user?.name}}</a>

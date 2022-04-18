@@ -13,9 +13,8 @@ export class AppComponent {
   constructor(public appService: AppService,
               private router: Router) {}
 
-
   logOut() {
-      this.appService.user = null;
-      this.router.navigate(['/']);
+    /*  this.appService.user = null;
+      this.router.navigate(['']);*/
     }
 }

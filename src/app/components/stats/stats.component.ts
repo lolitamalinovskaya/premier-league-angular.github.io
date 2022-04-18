@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StatService} from "../../services/stat.service";
 import {AppService} from "../../app.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-stats',
@@ -14,14 +13,9 @@ export class StatsComponent implements OnInit {
 
   constructor(public statService: StatService,
               public appService: AppService,
-              private router: Router,
               ) { }
 
   ngOnInit(): void {
-    if (this.appService.user === null) {
-      this.router.navigate(['/logIn']);
-      return;
-    }
     if (this.appService.stats.length === 0) {
       this.isLoading = true;
       this.statService.getStats().subscribe(response => {

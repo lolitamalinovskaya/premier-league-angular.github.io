@@ -24,7 +24,6 @@ page?: number = 1;
       this.router.navigate(['/logIn']);
       return;
     }
-
     if (this.appService.matches.length === 0) {
       this.fetchMatches();
     }

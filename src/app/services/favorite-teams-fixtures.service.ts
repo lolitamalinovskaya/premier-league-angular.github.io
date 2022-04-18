@@ -25,7 +25,7 @@ export class FavoriteTeamsFixturesService {
 
   private handleError(error: HttpErrorResponse) {
     error.status === 0 ?
-      console.log('An error occurred:', error.error) :
+      console.error('An error occurred:', error.error) :
       console.error(`Backend returned code ${error.status}, body was: `, error.error);
 
     return throwError(() => new Error('Something bad happened; please try again later.'));
