@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatchService} from "../../services/match.service";
 import {AppService} from "../../app.service";
 import {Router} from "@angular/router";
 import {PageEvent} from "@angular/material/paginator";
+import {LogInService} from "../../services/log-in.service";
 
 @Component({
   selector: 'app-matches',
@@ -11,13 +12,15 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class MatchesComponent implements OnInit {
 
-isLoading = false;
-page?: number = 1;
+  isLoading = false;
+  page?: number = 1;
 
   constructor(public matchService: MatchService,
               public appService: AppService,
               private router: Router,
-              ) { }
+              public logInService: LogInService,
+  ) {
+  }
 
   ngOnInit(): void {
     if (this.appService.user === null) {
@@ -31,11 +34,24 @@ page?: number = 1;
 
   fetchMatches(): void {
     this.isLoading = true;
-    this.matchService.getMatches().subscribe(response => {
-      this.appService.matches = response.data;
-      this.appService.matchesLinks = response.links;
-      this.appService.matchesMeta = response.meta;
-      this.isLoading = false;
+    this.matchService.getMatches().subscribe({
+      next: response => {
+        this.appService.matches = response.data;
+        this.appService.matchesLinks = response.links;
+        this.appService.matchesMeta = response.meta;
+        this.isLoading = false;
+      },
+      error: e => {
+        if (e.status === '401') {
+          this.logInService.getRefreshToken().subscribe({
+            next: (response) => {
+              this.appService.setToken(response.access_token);
+              this.fetchMatches();
+            },
+            error: () => this.router.navigate(['500'])
+          });
+        }
+      }
     });
   }
 

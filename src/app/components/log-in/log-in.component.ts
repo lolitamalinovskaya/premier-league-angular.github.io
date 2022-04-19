@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder} from "@angular/forms";
+
 import {AppService} from "../../app.service";
 import {LogInService} from "../../services/log-in.service";
-import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-log-in',

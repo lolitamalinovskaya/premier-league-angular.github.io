@@ -2,16 +2,19 @@
   <div class="wrapper">
     <div class="header" role="banner">
       <a><h1 class="logo" routerLink="" routerLinkActive="active">PREMIER LEAGUE APP</h1></a>
-      <a class="header-link-stats" routerLink="/stats" routerLinkActive="active">CLUB STATS</a>
       <div class="header-link">
-        <a class="header-link-sign" routerLink="/logIn" routerLinkActive="active" *ngIf="appService.user === null">Log IN</a>
-        <a class="header-link-sign" *ngIf="appService.user !== null">{{appService.user?.name}}</a>
-        <a class="header-link-sign" routerLink="/signUp" routerLinkActive="active" *ngIf="appService.user === null">Sign UP</a>
-        <a class="header-link-sign" (click)="logOut()" *ngIf="appService.user !== null">Log OUT</a>
+        <div *ngIf="!appService.user; else elseBlock">
+          <a class="header-link-sign" style="margin-right: 1.5rem;" routerLink="/logIn" routerLinkActive="active">Log IN</a>
+          <a class="header-link-sign" routerLink="/signUp" routerLinkActive="active">Sign UP</a>
+        </div>
+        <ng-template #elseBlock>
+          <a class="header-link-sign">{{appService.user?.name}}</a>
+          <a class="header-link-sign" (click)="logOut()">Log OUT</a>
+        </ng-template>
       </div>
     </div>
     <div class="content" role="main">
-      <app-tool-bar *ngIf="appService.user !== null"></app-tool-bar>
+      <app-tool-bar></app-tool-bar>
       <router-outlet></router-outlet>
     </div>
   </div>

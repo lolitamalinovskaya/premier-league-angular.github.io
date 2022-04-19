@@ -13,7 +13,6 @@ export class FavoriteTeamsService {
 
   public getFavoriteTeams(): Observable<any> {
     const url = 'https://polar-shelf-59117.herokuapp.com/api/v1/user-favorite-teams';
-
     const headers = {"Authorization": `Bearer ${this.appService.accessToken}`, "Accept": "application/json"}
 
     return this.http.get<any>(url,{ headers })
@@ -27,6 +26,6 @@ export class FavoriteTeamsService {
       console.error('An error occurred:', error.error) :
       console.error(`Backend returned code ${error.status}, body was: `, error.error);
 
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(() => new Error(`${error.status}`));
   }
 }

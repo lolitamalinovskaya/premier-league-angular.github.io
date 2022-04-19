@@ -2,6 +2,7 @@
   <h3 class="sign-header">LOG IN AND FOLLOW YOUR FAVORITE TEAMS!</h3>
   <form class="sign-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
     <button class="sign-button" (click)="redirectGoogle()">Login with Google</button>
+    <p *ngIf="logInService.error" style="color: darkred; margin: 0.5rem auto;">{{logInService.error}}</p>
     <input class="sign-input" type="text" placeholder="Email" formControlName="email"/>
     <input class="sign-input" type="password" placeholder="Password" formControlName="password"/>
     <button class="sign-button" type="submit">LOG IN</button>

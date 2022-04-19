@@ -28,7 +28,7 @@ export class PlayerService {
       console.error('An error occurred:', error.error) :
       console.error(`Backend returned code ${error.status}, body was: `, error.error);
 
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(() => new Error(`${error.status}`));
   }
 }
 

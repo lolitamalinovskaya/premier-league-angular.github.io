@@ -20,8 +20,7 @@ export class TeamDetailComponent implements OnInit {
     public appService: AppService,
     private router: Router,
     public logInService: LogInService,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     if (this.appService.user === null) {
@@ -45,7 +44,7 @@ export class TeamDetailComponent implements OnInit {
         this.isLoading = false;
       },
       error: e => {
-        if(e.status === '401') {
+        if (e.status === '401') {
           this.logInService.getRefreshToken().subscribe({
             next: (response) => {
               this.appService.setToken(response.access_token);
@@ -54,11 +53,7 @@ export class TeamDetailComponent implements OnInit {
             error: () => this.router.navigate(['500'])
           });
         }
-       if(e.message === '404') {
-         this.router.navigate(['404']);
-       } else {
-         this.router.navigate(['500']);
-       }
+        e.message === '404' ? this.router.navigate(['404']) : this.router.navigate(['500']);
       }
     })
   }

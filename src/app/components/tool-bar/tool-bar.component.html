@@ -1,32 +1,44 @@
+<div class="card-container" *ngIf="appService.user; else elseBlock">
+  <a class="card" routerLink="/players" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/players.svg" width="36" height="36" alt="players"/>
+    <span>Players</span>
+  </a>
 
+  <a class="card" routerLink="/teams" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/teams.svg" width="36" height="36" alt="teams"/>
+    <span>Teams</span>
+  </a>
+
+  <a class="card" routerLink="/matches" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/matches.svg" width="36" height="36" alt="matches"/>
+    <span>Matches</span>
+  </a>
+
+  <a class="card" routerLink="/favorite" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/red-heart.svg" width="36" height="36" alt="stats"/>
+    <span>Favorite teams</span>
+  </a>
+
+  <a class="card" routerLink="/results" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/ball.svg" width="36" height="36" alt="stats"/>
+    <span>Favorite teams results</span>
+  </a>
+
+  <a class="card" routerLink="/fixtures" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/star.svg" width="36" height="36" alt="stats"/>
+    <span>Favorite teams fixtures</span>
+  </a>
+
+  <a class="card" routerLink="/stats" routerLinkActive="active">
+    <img class="material-icons" src="././assets/icons/statistic-table.svg" width="36" height="36" alt="stats"/>
+    <span>Club stats</span>
+  </a>
+</div>
+<ng-template #elseBlock>
   <div class="card-container">
-    <a class="card" routerLink="/players" routerLinkActive="active">
-      <img class="material-icons" src="././assets/icons/players.svg" width="36" height="36" alt="players"/>
-      <span>Players</span>
-    </a>
-
-    <a class="card" routerLink="/teams" routerLinkActive="active">
-      <img class="material-icons" src="././assets/icons/teams.svg" width="36" height="36" alt="teams"/>
-      <span>Teams</span>
-    </a>
-
-    <a class="card" routerLink="/matches" routerLinkActive="active">
-      <img class="material-icons" src="././assets/icons/matches.svg" width="36" height="36" alt="matches"/>
-      <span>Matches</span>
-    </a>
-
-    <a class="card" routerLink="/favorite" routerLinkActive="active">
-      <img class="material-icons" src="././assets/icons/red-heart.svg" width="36" height="36" alt="stats"/>
-      <span>Favorite teams</span>
-    </a>
-
-    <a class="card" routerLink="/results" routerLinkActive="active">
-      <img class="material-icons" src="././assets/icons/ball.svg" width="36" height="36" alt="stats"/>
-      <span>Favorite teams results</span>
-    </a>
-
-    <a class="card" routerLink="/fixtures" routerLinkActive="active">
-      <img class="material-icons" src="././assets/icons/star.svg" width="36" height="36" alt="stats"/>
-      <span>Favorite teams fixtures</span>
+    <a class="card" routerLink="/stats" routerLinkActive="active">
+      <img class="material-icons" src="././assets/icons/statistic-table.svg" width="36" height="36" alt="stats"/>
+      <span>Club stats</span>
     </a>
   </div>
+</ng-template>

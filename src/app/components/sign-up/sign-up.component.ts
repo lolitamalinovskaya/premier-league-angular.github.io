@@ -16,6 +16,8 @@ export class SignUpComponent implements OnInit {
     password: '',
   })
 
+  error = null;
+
   constructor(private formBuilder: FormBuilder,
               private http: HttpClient,
               private router: Router,
@@ -26,12 +28,14 @@ export class SignUpComponent implements OnInit {
     const headers = {"Content-Type": "application/json", "Accept": "application/json, text/plain, */*"};
     const body = this.checkoutForm.value;
 
-   this.http.post<any>(url, body, { headers }).subscribe(data => {
-        this.router.navigate(['/logIn']);
-     }
-   );
+    this.http.post<any>(url, body, {headers}).subscribe({
+      next: () => this.router.navigate(['/logIn']),
+      error: e => {
+        this.error = e.error.message;
+      }
+    });
 
-   this.checkoutForm.reset();
+    this.checkoutForm.reset();
   }
 
   ngOnInit(): void {

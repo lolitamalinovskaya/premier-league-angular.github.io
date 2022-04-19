@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchDetailService} from "../../services/match-detail.service";
 import {AppService} from "../../app.service";
 import {MatchService} from "../../services/match.service";
+import {LogInService} from "../../services/log-in.service";
 
 @Component({
   selector: 'app-match-detail',
@@ -16,7 +17,7 @@ export class MatchDetailComponent implements OnInit {
               public appService: AppService,
               public matchService: MatchService,
               private router: Router,
-  ) {
+              public logInService: LogInService,) {
   }
 
   ngOnInit(): void {
@@ -37,17 +38,22 @@ export class MatchDetailComponent implements OnInit {
     this.isLoading = true;
 
     this.matchDetailService.getMatchDetail(matchIdFromRoute).subscribe({
-      next: ( response) => {
-      this.appService.matchDetails = response.data;
-      this.isLoading = false;
-    },
+      next: response => {
+        this.appService.matchDetails = response.data;
+        this.isLoading = false;
+      },
       error: e => {
-        if(e.message === '404') {
-          this.router.navigate(['404']);
-        } else {
-          this.router.navigate(['500']);
+        if (e.status === '401') {
+          this.logInService.getRefreshToken().subscribe({
+            next: (response) => {
+              this.appService.setToken(response.access_token);
+              this.getMatchDetail();
+            },
+            error: () => this.router.navigate(['500'])
+          });
         }
+        e.message === '404' ? this.router.navigate(['404']) : this.router.navigate(['500']);
       }
-  })
+    })
   }
 }

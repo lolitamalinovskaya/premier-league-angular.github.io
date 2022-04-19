@@ -1,6 +1,7 @@
 <div class="sign-wrapper">
   <h3 class="sign-header">SIGN UP AND FOLLOW YOUR FAVORITE TEAMS!</h3>
   <form class="sign-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <p *ngIf="error" style="color: darkred; margin: 0.5rem auto;">{{error}}</p>
     <input class="sign-input" type="text" placeholder="Name" formControlName="name"/>
     <input class="sign-input" type="text" placeholder="Email" formControlName="email"/>
     <input class="sign-input" type="password" placeholder="Password" formControlName="password"/>

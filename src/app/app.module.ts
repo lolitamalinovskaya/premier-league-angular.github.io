@@ -22,9 +22,9 @@ import { MatchDetailComponent } from './components/match-detail/match-detail.com
 import { FavoriteTeamsComponent } from './components/favorite-teams/favorite-teams.component';
 import { FavoriteTeamsResultComponent } from './components/favorite-teams-result/favorite-teams-result.component';
 import { FavoriteTeamsFixturesComponent } from './components/favorite-teams-fixtures/favorite-teams-fixtures.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
-import { ServerErrorComponent } from './server-error/server-error.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { ServerErrorComponent } from './components/server-error/server-error.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

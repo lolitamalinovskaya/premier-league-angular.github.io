@@ -23,7 +23,6 @@ export class TeamDetailsService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log(error.status)
     error.status === 0 ?
       console.error('An error occurred:', error.error) :
       console.error(`Backend returned code ${error.status}, body was: `, error.error);
