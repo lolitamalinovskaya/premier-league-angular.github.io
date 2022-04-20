@@ -25,6 +25,7 @@ import { FavoriteTeamsFixturesComponent } from './components/favorite-teams-fixt
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { CreateNewPlayerComponent } from './components/create-new-player/create-new-player.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -61,6 +62,7 @@ const routes: Routes = [
     NotFoundComponent,
     HomeComponent,
     ServerErrorComponent,
+    CreateNewPlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ const routes: Routes = [
     MatProgressBarModule,
   ],
   providers: [
+    CreateNewPlayerComponent
   ],
   bootstrap: [AppComponent]
 })

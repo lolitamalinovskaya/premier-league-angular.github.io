@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {AppService} from "../app.service";
 import {catchError, Observable, throwError} from "rxjs";
-import {MatchService} from "./match.service";
 
 @Injectable({
   providedIn: 'root'

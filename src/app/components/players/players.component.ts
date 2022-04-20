@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {PlayerService} from "../../services/player.service";
+import PlayerInterface, {PlayerService} from "../../services/player.service";
 import {AppService} from "../../app.service";
 import {Router} from "@angular/router";
 import {PageEvent} from "@angular/material/paginator";
 import {LogInService} from "../../services/log-in.service";
+import {CreateNewPlayerComponent} from "../create-new-player/create-new-player.component";
 
 
 @Component({
@@ -43,6 +44,7 @@ export class PlayersComponent implements OnInit {
         this.appService.playersMeta = response.meta;
         this.isLoading = false;
       },
+
       error: e => {
         if (e.status === '401') {
           this.logInService.getRefreshToken().subscribe({

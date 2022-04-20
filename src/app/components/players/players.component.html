@@ -2,6 +2,7 @@
   <mat-progress-spinner  mode="indeterminate"></mat-progress-spinner>
 </div>
 <section *ngIf="appService.players && !isLoading">
+  <app-create-new-player></app-create-new-player>
 <h2>PLAYERS</h2>
 <div class="mat-elevation-z8">
   <table class="player-table" mat-table [dataSource]="appService.players ">

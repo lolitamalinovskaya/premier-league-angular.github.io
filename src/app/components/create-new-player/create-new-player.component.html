@@ -1,0 +1,8 @@
+<form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+  <p *ngIf="playerForm.invalid" style="margin: 0.5rem auto; color: white;">The entered data is not correct!</p>
+<input type="text" placeholder="name*" formControlName="name" id="name" />
+<input type="text" placeholder="surname*" formControlName="surname"  />
+<input type="number" placeholder="team-id*" formControlName="team_id"  />
+<input type="number" placeholder="player-position-id*" formControlName="player_position_id" />
+<button [disabled]="!playerForm.valid" type="submit">create new player</button>
+</form>
