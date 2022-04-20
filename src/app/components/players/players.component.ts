@@ -16,7 +16,7 @@ export class PlayersComponent implements OnInit {
 
   isLoading = false;
   displayedColumns: string[] = ['id', 'name', 'position', 'team'];
-  page?: number = 1;
+  page?: number = 0;
 
   constructor(public playerService: PlayerService,
               public appService: AppService,

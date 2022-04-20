@@ -14,7 +14,7 @@ export class PlayerService {
     let params = new HttpParams();
 
     if(page !== undefined) {
-      params = params.set('page', page)
+      params = params.set('page', page+1)
     }
 
     return this.http.get<PlayerInterface>(url, { params: params })

@@ -36,9 +36,7 @@ export class CreateNewPlayerComponent implements OnInit {
       .subscribe( {
         next: (response) => {
           this.newPlayer = response.data;
-          this.appService.players.push(<PlayerInterface>this.newPlayer);
           this.playersComponent.fetchPlayers();
-       /*   console.log(this.appService.players);*/
         },
         error: e => {
           this.error = e.error.message;
