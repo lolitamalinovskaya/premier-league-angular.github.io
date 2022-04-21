@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import PlayerInterface, {PlayerService} from "../../services/player.service";
+import {PlayerService} from "../../services/player.service";
 import {AppService} from "../../app.service";
 import {Router} from "@angular/router";
 import {PageEvent} from "@angular/material/paginator";
 import {LogInService} from "../../services/log-in.service";
-import {CreateNewPlayerComponent} from "../create-new-player/create-new-player.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -15,8 +15,11 @@ import {CreateNewPlayerComponent} from "../create-new-player/create-new-player.c
 export class PlayersComponent implements OnInit {
 
   isLoading = false;
-  displayedColumns: string[] = ['id', 'name', 'position', 'team'];
+  displayedColumns: string[] = this.appService.admin ?
+    ['id', 'name', 'position', 'team', 'refactor'] :
+    ['id', 'name', 'position', 'team'];
   page?: number = 0;
+  isForm?:any = {};
 
   constructor(public playerService: PlayerService,
               public appService: AppService,
@@ -48,7 +51,7 @@ export class PlayersComponent implements OnInit {
       error: e => {
         if (e.status === '401') {
           this.logInService.getRefreshToken().subscribe({
-            next: (response) => {
+            next: response => {
               this.appService.setToken(response.access_token);
               this.fetchPlayers();
             },
@@ -57,6 +60,38 @@ export class PlayersComponent implements OnInit {
         }
       }
     });
+  }
+
+  deletePlayer(id: number): void {
+    this.playerService
+      .deletePlayer(id)
+      .subscribe({
+        next: () => this.fetchPlayers()
+      });
+  }
+
+  updatePlayerForm = new FormGroup({
+    name: new FormControl('', Validators.minLength(4)),
+    surname: new FormControl('', Validators.minLength(4)),
+    team_id: new FormControl(null),
+    player_position_id: new FormControl(null),
+  })
+
+  updatePlayer(id: number): void {
+    this.playerService
+      .updatePlayer(this.updatePlayerForm.value, id)
+      .subscribe({
+        next: response => {
+          response.data;
+          this.fetchPlayers();
+          this.updatePlayerForm.reset();
+          this.isForm[id] = !this.isForm[id];
+        }
+      })
+  }
+
+  toggleForm(id: number): void {
+    this.isForm[id] = !this.isForm[id];
   }
 
   onPage(event: PageEvent): void {

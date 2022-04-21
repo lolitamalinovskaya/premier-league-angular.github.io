@@ -30,6 +30,7 @@ export class AppService {
   favoriteTeams = new Set<any>();
   favoriteTeamResults = new Array<any>();
   favoriteTeamFixtures = new Array<any>();
+  admin: boolean = this.user?.role === 'admin';
 
   constructor() { }
 

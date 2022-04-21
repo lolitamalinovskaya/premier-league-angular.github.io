@@ -2,10 +2,10 @@
   <mat-progress-spinner  mode="indeterminate"></mat-progress-spinner>
 </div>
 <section *ngIf="appService.players && !isLoading">
-  <app-create-new-player></app-create-new-player>
+  <app-create-new-player *ngIf="appService.admin"></app-create-new-player>
 <h2>PLAYERS</h2>
 <div class="mat-elevation-z8">
-  <table class="player-table" mat-table [dataSource]="appService.players ">
+  <table class="player-table" mat-table [dataSource]="appService.players">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef style="text-align: center"> No. </th>
@@ -27,6 +27,23 @@
       <td mat-cell *matCellDef="let element"> {{element.team?.name}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="refactor" *ngIf="appService.admin">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Refactor</th>
+      <td mat-cell *matCellDef="let element" style="position: relative;">
+        <div class="inner-svg">
+         <button> <img (click)="toggleForm(element.id)" class="svg-pencil" src="assets/icons/pencil.svg"/> </button>
+         <button> <img (click)="deletePlayer(element.id)" class="svg-trash" src="assets/icons/trash.svg"/> </button>
+        </div>
+        <form [formGroup]="updatePlayerForm" *ngIf="isForm[element.id]" (ngSubmit)="updatePlayer(element.id)" class="form-update">
+          <input type="text" placeholder="name*" formControlName="name" id="name" />
+          <input type="text" placeholder="surname*" formControlName="surname"  />
+          <input type="number" placeholder="team-id*" formControlName="team_id"  />
+          <input type="number" placeholder="player-position-id*" formControlName="player_position_id" />
+          <button type="submit"><img class="svg-checked" src="assets/icons/checked.svg"/></button>
+        </form>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
@@ -39,5 +56,7 @@
                  aria-label="Select page of periodic elements"
                  style="margin-bottom: 10rem;">
   </mat-paginator>
-</div>
+
+
+  </div>
 </section>

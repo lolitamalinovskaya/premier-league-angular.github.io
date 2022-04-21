@@ -2,8 +2,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 1rem auto;
-  padding: 0.5rem;
+  margin: 2rem auto 1rem;
+  padding: 1rem;
   background-color: #142d3a;
 }
 
@@ -26,7 +26,6 @@ button {
   font-size: calc(5px + 2vmin);
   transition: background-color 0.25s ease-in-out;
 }
-
 
 button:hover {
   cursor: pointer;

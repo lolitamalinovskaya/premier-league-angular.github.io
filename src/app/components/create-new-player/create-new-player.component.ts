@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import { Validators } from '@angular/forms';
+import {Validators} from '@angular/forms';
 import {CreateNewPlayerService} from "../../services/create-new-player.service";
 import {AppService} from "../../app.service";
-import PlayerInterface, {PlayerService} from "../../services/player.service";
 import {PlayersComponent} from "../players/players.component";
 
 @Component({
@@ -15,7 +14,7 @@ export class CreateNewPlayerComponent implements OnInit {
 
   constructor(public createPlayerService: CreateNewPlayerService, public appService: AppService,
               public playersComponent: PlayersComponent,
-              ) { }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -28,14 +27,13 @@ export class CreateNewPlayerComponent implements OnInit {
   })
 
   error = null;
-  newPlayer = {};
 
   onSubmit(): void {
     this.createPlayerService
       .createPlayer(this.playerForm.value)
-      .subscribe( {
+      .subscribe({
         next: (response) => {
-          this.newPlayer = response.data;
+          response.data;
           this.playersComponent.fetchPlayers();
         },
         error: e => {
@@ -43,5 +41,4 @@ export class CreateNewPlayerComponent implements OnInit {
         }
       })
   }
-
 }

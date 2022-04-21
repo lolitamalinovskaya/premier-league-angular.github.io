@@ -1,4 +1,5 @@
 <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+  <h2 style="color: white; font-size: calc(10px + 2vmin); margin: 1rem auto;">Create new player</h2>
   <p *ngIf="playerForm.invalid" style="margin: 0.5rem auto; color: white;">The entered data is not correct!</p>
 <input type="text" placeholder="name*" formControlName="name" id="name" />
 <input type="text" placeholder="surname*" formControlName="surname"  />
